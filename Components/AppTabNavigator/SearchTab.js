@@ -8,10 +8,9 @@ import {
 } from "react-native";
 import { List, ListItem,SearchBar } from "react-native-elements";
 import { Icon, Item } from "native-base";
-import {createStackNavigator} from 'react-navigation'
 import data from "./base.json";
 import _ from 'lodash';
-import SongScreen from "../SongScreen"
+
 
 
 
@@ -29,7 +28,7 @@ class SearchTab extends Component {
   contains = ({ nazwaCyr, nazwaLac }, query) => {
     
     if (nazwaLac.includes(query) || nazwaCyr.includes(query)) {
-      console.log("text");
+      
       return true;
     }
     
@@ -41,7 +40,7 @@ class SearchTab extends Component {
   componentDidMount() {
     this.setState({
       isLoading: false,
-      dataSource: data.piosenki,
+      dataSource: _.take(data.piosenki,5),
       fullData: data.piosenki
     });
   }
@@ -71,7 +70,7 @@ class SearchTab extends Component {
   contains = ({ nazwaLac, nazwaCyr }, query) => {
 
   if (nazwaLac.toLowerCase().includes(query) || nazwaCyr.toLowerCase().includes(query) ) {
-    console.log("text",nazwaLac.toLowerCase())
+    
     return true;
   }
 
@@ -79,14 +78,14 @@ class SearchTab extends Component {
 };
 
 
-  handleSearch = (text)=>{
+  handleSearch = _.debounce((text)=>{
     const formatQuery = text.toLowerCase();
     const dataSource = _.filter(this.state.fullData, item =>{
         return this.contains(item,formatQuery);
     });
 
     this.setState({query: text,dataSource});
-  };
+  });
 
 
 
@@ -116,16 +115,6 @@ class SearchTab extends Component {
 }
 
 
-
-const searchTabStackNavigator = createStackNavigator ({
-  SearchTab:{
-    screen: SearchTab
-  },
-  SongScreen:{
-    screen: SongScreen
-  }
-  
-  })
 
 
 
