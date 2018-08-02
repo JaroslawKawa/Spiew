@@ -1,0 +1,43 @@
+{
+	"info" : [
+		{"name" : "Quang Vi", "sex" : "male", "age" : 23, "hobby" : "sleeping"},
+		{"name" : "Saitama", "sex" : "male", "age" : 25, "hobby" : "reading comic"},
+		{"name" : "Songoku", "sex" : "male", "age" : 999, "hobby" : "eating"}
+	]
+}
+
+
+
+
+
+
+    <List>
+        <FlatList
+        data={this.state.dataSource}
+        renderItem={({item}) => {
+            <ListItem 
+            roundAvatar 
+            title={item.nazwaLac}
+            subtitle={item.nazwaCyr}
+            
+            />
+          }}
+          keyExtractor={(item)=> item.nazwaLac}
+
+        />
+      </List>
+
+
+      <View style={{flex: 1, paddingTop:20}}>
+      <FlatList
+        data={this.state.dataSource}
+        renderItem={({item}) => {
+          return (
+            <View>
+              <Text style={styles.info}>{item.nazwaLac} is {item.nazwaCyr}</Text>
+            </View>
+          )
+        }}
+        keyExtractor={(item, index) => index.toString()}
+      />
+    </View>
