@@ -1,6 +1,8 @@
-import React, { Component } from 'react';
-import { View, Text} from 'react-native';
-import {Icon} from 'native-base';
+import React, { Component } from "react";
+import { View,Button, Text } from "react-native";
+import { Icon } from "native-base";
+import { Image } from 'react-native';
+import { FileSystem } from 'expo';
 
 class ProfileTab extends Component {
   static navigationOptions = {
@@ -11,13 +13,15 @@ class ProfileTab extends Component {
 }
 
 
-
   render() {
+    
     return (
-      <View>
-        
-        <Text> ProfilTab </Text>
-      </View>
+      
+      (<View>
+               
+               
+       </View>
+      )
     );
   }
 }

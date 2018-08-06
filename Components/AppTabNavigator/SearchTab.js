@@ -10,6 +10,8 @@ import { List, ListItem,SearchBar } from "react-native-elements";
 import { Icon, Item } from "native-base";
 import data from "./base.json";
 import _ from 'lodash';
+import down from '../dowonloading'
+
 
 
 
@@ -17,8 +19,10 @@ import _ from 'lodash';
 class SearchTab extends Component {
   constructor(props) {
     super(props);
+
     this.state = {
       isLoading: true,
+      xd:[],
       dataSource: [],
       query: "",
       fullData: []
@@ -37,6 +41,19 @@ class SearchTab extends Component {
 
 
 
+/*   
+poloaczenie z serverem
+componentDidMount() {
+    
+    down()
+    .then((baza)=>{
+      this.setState({
+        isLoading: false,
+        dataSource: _.take(JSON.parse(baza).piosenki,5),
+        fullData: JSON.parse(baza).piosenki
+      });
+    })
+  } */
   componentDidMount() {
     this.setState({
       isLoading: false,
@@ -44,6 +61,7 @@ class SearchTab extends Component {
       fullData: data.piosenki
     });
   }
+  
 
   static navigationOptions = {
     tabBarIcon: ({ tintColor }) => (
@@ -99,6 +117,7 @@ class SearchTab extends Component {
   render() {
     if (this.state.isLoading) {
       return (
+        
         <View style={{ flex: 1, padding: 20 }}>
           <ActivityIndicator />
         </View>
