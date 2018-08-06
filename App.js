@@ -39,7 +39,7 @@ const AppStackNavigator = createStackNavigator({
   },
 
 
-})
+});
 
 const styles = StyleSheet.create({
   container: {

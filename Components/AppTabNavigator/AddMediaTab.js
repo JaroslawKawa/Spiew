@@ -8,7 +8,7 @@ class AddMediaTab extends Component {
             <Icon name="ios-add-circle" style={{color:tintColor}}/>
            
         )
-    }
+    };
 
   render() {
     return (

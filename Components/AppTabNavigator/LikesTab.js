@@ -6,10 +6,8 @@ class LikesTab extends Component {
     static navigationOptions = {
         tabBarIcon: ({tintColor})=>(
             <Icon name="ios-heart" style={{color:tintColor}}/>
-           
         )
-    }
-
+    };
 
   render() {
     return (
